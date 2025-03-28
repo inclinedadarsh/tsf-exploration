@@ -5,7 +5,7 @@ __all__ = ["MLPForecaster"]
 import numpy as np
 import tensorflow as tf
 
-from forecasting.deep_learning.base import BaseDeepForecaster
+from tsf_exploration.forecasting.deep_learning.base import BaseDeepForecaster
 from aeon.networks import MLPNetwork
 
 
