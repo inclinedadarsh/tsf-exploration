@@ -4,7 +4,7 @@ import typing
 
 import numpy as np
 
-from tsf_exploration.forecasting.deep_learning.base import BaseDeepLearningNetwork
+from aeon.networks import BaseDeepLearningNetwork
 
 
 class LSTMNetwork(BaseDeepLearningNetwork):
@@ -164,10 +164,12 @@ class LSTMNetwork(BaseDeepLearningNetwork):
             )(x)
 
             # Apply dropout only to intermediate layers
-            if idx < self.n_layers - 1:
-                x = keras.layers.Dropout(self._dropout_rate[idx])(x)
+            # if idx < self.n_layers - 1:
+            #     x = keras.layers.Dropout(self._dropout_rate[idx])(x)
 
         # Apply final dropout to the output
-        output_layer = keras.layers.Dropout(self._dropout_last)(x)
+        # output_layer = keras.layers.Dropout(self._dropout_last)(x)
+        # FIXME: DROPOUT IS NOT WORKING
+        output_layer = x
 
         return input_layer, output_layer
